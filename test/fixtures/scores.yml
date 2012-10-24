@@ -1,0 +1,20 @@
+score0:
+  response_id: <%= Fixtures.identify(:response0) %>
+  question_id: <%= Fixtures.identify(:question1) %>
+  score: 5
+  comments: "testing this stuff - q1"
+score1:
+   response_id: <%= Fixtures.identify(:response0) %>
+   question_id: <%= Fixtures.identify(:question1) %>
+   score: 5
+   comments: "testing this stuff - q1"
+score2:
+     response_id: <%= Fixtures.identify(:response0) %>
+     question_id: <%= Fixtures.identify(:question1) %>
+     score: 5
+     comments: "testing this stuff - q1"
+score3:
+  response_id: <%= Fixtures.identify(:response1) %>
+  question_id: <%= Fixtures.identify(:question3) %>
+  score: 4
+  comments: "testing this stuff - q3"

@@ -1,0 +1,16 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+Type0:
+  question_id: <%= Fixtures.identify(:question1)%>
+  q_type: "TextField"
+  parameters: "section::size::separator1|separator2::1|1"
+
+#one: {}
+# column: value
+#
+#two: {}
+#  column: value
