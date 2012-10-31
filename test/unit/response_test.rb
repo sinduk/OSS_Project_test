@@ -6,6 +6,7 @@ class ResponseTest < ActiveSupport::TestCase
   fixtures :response_maps
   # set up the variable for test cases
   def setup
+    # create a new assignment
     @response = responses(:response0)
     @response1 = @response.id
     @responsemaps = response_maps(:response_maps0)
@@ -22,7 +23,7 @@ class ResponseTest < ActiveSupport::TestCase
     @response.additional_comment = "abcd"
     @response.save
     @response.reload
-  
+    # verifying whether the update is done properly or not
     assert_equal @response.additional_comment, "abcd"
   end
   # test case for the function to get the total score
@@ -34,6 +35,7 @@ class ResponseTest < ActiveSupport::TestCase
     @scores1.each {|a|
     total_score   = a.score + total_score
     }
+    # verifying whether the total score is generated properly or not
     assert_equal total_score , 15
 
 
