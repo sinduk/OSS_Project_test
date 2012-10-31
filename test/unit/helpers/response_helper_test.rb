@@ -5,14 +5,19 @@ require 'app/helpers/response_helper'
 
 class ResponseHelperTest < ActiveSupport::TestCase
  include ResponseHelper
+ # include all the fixtures
  fixtures :responses
  fixtures :response_maps
  fixtures :questionnaires
  fixtures :questions
  fixtures :question_types
+ # set up the variables for the test cases
 def setup
+# create a new response
   @response1 = responses(:response0)
+  # create a new questionnaire
   @questionnaire1 = questionnaires(:questionnaire0)
+  # create a new array to review scores
   @review_scores = Array.new
   @questions  = @questionnaire1.questions
   @questions.each{
@@ -25,10 +30,12 @@ def setup
   #@obj.extend(ApplicationController)
 end
 
+# test case to compare scores
 def test_compare_scores
   assert_equal ResponseHelper.compare_scores(@response1,@questionnaire1)  , nil
 end
 
+# test case to get the total scores
 def test_get_total_scores
   map_class = @response1.map.class
   existing_responses = map_class.get_assessments_for(@response1.map.reviewee)
@@ -36,6 +43,7 @@ def test_get_total_scores
   assert_equal total, 0
   assert_equal count, 0
 end
+# test case to notify the instructor
 def test_notify_instructor
 
   @response2=@response1.map.assignment
@@ -44,6 +52,7 @@ def test_notify_instructor
 
 end
 
+# test case for the function, remove empty advice
   def test_remove_empty_advice
 
     @advices = QuestionAdvice.find_all_by_question_id(1)
@@ -51,7 +60,7 @@ end
     assert_equal @advices.length, 0
 
   end
-
+# test case to construct table
   def test_construct_table
 
   @questionType1 = QuestionType.new
@@ -64,6 +73,7 @@ end
   assert_equal table_hash.to_s, "table_headerstableHeader1|tableHeader2end_tabletrueend_coltruestart_coltruetable_titletableTitlestart_tabletrue"
 
   end
+  # test case for the function, accordion_title
   def test_get_accordion_title
     #@questionType1 = QuestionType.create(:id =>3,:q_type =>"TextField",:parameters => "section::size::separator1|separator2::1|1", :question_id => 1)
     current_topic = @questionType1.parameters.split("::")
