@@ -6,7 +6,7 @@ class ResponseControllerTest < ActionController::TestCase
 def rescue_action(a) raise a end;
 end
 class ResponseControllerTest < ActionController::TestCase
-
+# included fixtures
  fixtures :questionnaires
  fixtures :users
  fixtures :question_advices
@@ -17,13 +17,15 @@ class ResponseControllerTest < ActionController::TestCase
  set_fixture_class :roles_permissions => 'RolesPermission'
  fixtures :users
 
+# setting up the environment for the test cases
  def setup
 
-
+# creating new response controller
    @controller = ResponseController.new
+   # creating new request
    @request    = ActionController::TestRequest.new
    @response   = ActionController::TestResponse.new
-
+# requesting a new session
    @request.session[:user] = User.find(users(:admin).id )
    roleid = User.find(users(:admin).id).role_id
    Role.rebuild_cache
